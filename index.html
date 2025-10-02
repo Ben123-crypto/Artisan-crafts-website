@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Artisan Crafts</title>
+  <link rel="stylesheet" href="styles/style.css">
+
+</head>
+
+<body>
+
+  <nav>
+    <form class="search-form" action="" onsubmit="return false;">
+      <select id="search-select" onchange="if(this.value) window.location.href=this.value">
+        <option value="">🔍 Search Products...</option>
+        <option value="#paintings">Paintings</option>
+        <option value="#pottery">Pottery</option>
+        <option value="#Jewelery">Jewelery</option>
+        <option value="#paintings">£200</option>
+        <option value="#pottery">£100</option>
+        <option value="#Jewelery">£50</option>
+      </select>
+    </form>
+    <ul>
+      <li><a href="index.html">Welcome</a></li>
+      <li><a href="#paintings">Paintings</a></li>
+      <li><a href="#pottery">Pottery</a></li>
+      <li><a href="#Jewelery">Jewelery</a></li>
+      <li><a href="checkout-form.html">Checkout</a></li>
+    </ul>
+  </nav>
+
+  <section >
+    <h1 class="business-name">Welcome to artisan crafts</h1>
+    <p class="welcome-paragraph">We offer beautiful handmade crafts and artwork. Explore and discover our unique collection of artisan products below</p>
+  </section>
+
+  <section>
+    <h2>Discover the history behind our expertly crafted products</h2>
+<div class="video-container">
+ <iframe width="560" height="315"
+  src="https://www.youtube.com/embed/_Lcc5gelhFM"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+</div>
+</section>
+
+<h1 id="paintings">Paintings</h1>
+<section class="product-section">
+  
+  <div class="product-card">
+    <a href="mona-lisa.html">
+      <img src="Images/Painting1.jpg" alt="Mona Lisa painting">
+      <h3 class="product-title">Da Vinci's Mona Lisa</h3>
+      </a>
+    <p class="product-price">£200</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+   <a href="starry-night.html">
+    <img src="Images/Painting2.jpg" alt="Van gough">
+    <h3 class="product-title">Van Gough's starry night</h3>
+   </a>
+    <p class="product-price">£200</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<h1 id="pottery">Pottery</h1>
+<section class="product-section">
+  
+  <div class="product-card">
+   <a href="japanese-style-pottery.html">
+    <img src="Images/Pottery1.jpg" alt="Japanese pottery">
+    <h3 class="product-title">Japanese style pottery</h3>
+   </a>
+    <p class="product-price">£100</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+   <a href="american-style-pottery.html">
+    <img src="Images/Pottery2.jpg" alt="American pottery">
+    <h3 class="product-title">American style pottery</h3>
+   </a>
+    <p class="product-price">£100</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<h1 id="Jewelery">Jewelery</h1>
+<section class="product-section">
+  
+  <div class="product-card">
+    <img src="Images/Jewelery1.jpg" alt="Dhalia necklace">
+    <a href="charm-bracelet.html">
+    <h3 class="product-title">Turkish charm bracelet</h3>
+    </a>
+    <p class="product-price">£50</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="Images/Jewelery2.jpg" alt="charm bracelet">
+   <a href="Dhalia-necklace.html">
+    <h3 class="product-title">The black Dhalia necklace</h3>
+   </a>
+    <p class="product-price">£50</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <p>Follow us:
+      <a href="#">Instagram</a> |
+      <a href="#">Facebook</a> |
+      <a href="#">Twitter</a>
+    </p>
+    <p>Contact: info@artisanstyles.com | (555) 123-4567</p>
+    <p>&copy; 2025 Artisan Styles. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="scripts/store.js"></script>
+<script>
+// Shopping cart logic
+let cart = [];
+function updateCartDisplay() {
+  const cartCount = document.getElementById('cart-count');
+  cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+  const cartItems = document.getElementById('cart-items');
+  if (cart.length === 0) {
+    cartItems.textContent = 'No items in cart.';
+    document.getElementById('cart-total').textContent = '';
+  } else {
+    cartItems.innerHTML = cart.map((item, idx) => `
+      <div>
+        <strong>${item.title}</strong> (£${item.price}) x ${item.qty}
+        <button onclick="removeFromCart(${idx})">Remove</button>
+        <input type="number" min="1" value="${item.qty}" onchange="updateQty(${idx}, this.value)">
+      </div>
+    `).join('');
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    document.getElementById('cart-total').textContent = `Total: £${total}`;
+  }
+  // Also update checkout section
+  const checkoutCart = document.getElementById('checkout-cart-items');
+  if (checkoutCart) {
+    if (cart.length === 0) {
+      checkoutCart.textContent = 'No items in cart.';
+    } else {
+      checkoutCart.innerHTML = '<h3>Products in Cart</h3>' + cart.map(item => `
+        <div><strong>${item.title}</strong> (£${item.price}) x ${item.qty}</div>
+      `).join('') + `<div style='margin-top:1rem;font-weight:bold;'>Total: £${cart.reduce((sum, item) => sum + item.price * item.qty, 0)}</div>`;
+    }
+  }
+}
+function addToCart(title, price) {
+  const idx = cart.findIndex(item => item.title === title);
+  if (idx > -1) {
+    cart[idx].qty++;
+  } else {
+    cart.push({ title, price, qty: 1 });
+  }
+  updateCartDisplay();
+}
+function removeFromCart(idx) {
+  cart.splice(idx, 1);
+  updateCartDisplay();
+}
+function updateQty(idx, qty) {
+  cart[idx].qty = Math.max(1, parseInt(qty));
+  updateCartDisplay();
+}
+function goToCheckout() {
+  document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+}
+// Attach add-to-cart buttons
+Array.from(document.getElementsByClassName('add-to-cart')).forEach(btn => {
+  btn.onclick = function() {
+    const card = btn.closest('.product-card');
+    const title = card.querySelector('.product-title').textContent;
+    const price = parseInt(card.querySelector('.product-price').textContent.replace('£',''));
+    addToCart(title, price);
+  };
+});
+// Product search
+function filterProducts() {
+  const query = document.getElementById('search-bar').value.toLowerCase();
+  document.querySelectorAll('.product-card').forEach(card => {
+    const title = card.querySelector('.product-title').textContent.toLowerCase();
+    card.style.display = title.includes(query) ? '' : 'none';
+  });
+}
+// Cart icon click scrolls to cart
+const cartIcon = document.getElementById('cart-icon');
+if (cartIcon) {
+  cartIcon.onclick = function() {
+    document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+  };
+}
+</script>
+
+</body>
+</html>

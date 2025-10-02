@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artisan crafts checkout</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script>
+      function removeCard(btn) {
+        btn.parentElement.remove();
+        updateTotal();
+      }
+      function updateTotal() {
+        var cards = document.querySelectorAll('.product-card');
+        var total = 0;
+        cards.forEach(function(card) {
+          var price = card.querySelector('.product-price').textContent.replace('£','');
+          total += parseInt(price);
+        });
+        document.getElementById('cart-total').textContent = 'Total: £' + total;
+      }
+      window.onload = function() {
+        updateTotal();
+      };
+    </script>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">← Back to Shop</a>
+    </nav>
+    <div class="checkout-form-container">
+      <form class="checkout-form">
+        <input type="text" id="name" name="name" placeholder="Name" required>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <input type="text" id="address" name="address" placeholder="Address" required>
+        <input type="text" id="card-number" name="card-number" placeholder="Card Number" required>
+        <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY" required>
+        <input type="text" id="card-cvc" name="card-cvc" placeholder="CVC" required>
+        <button type="submit">Submit</button>
+      </form>
+      <div style="margin-top:2rem;">
+        <h3>Products in Cart</h3>
+        <div class="product-card">
+          <img src="Images/Painting1.jpg" alt="Mona Lisa painting">
+          <h3 class="product-title">Da Vinci's Mona Lisa</h3>
+          <p class="product-price">£200</p>
+          <button class="remove-from-cart" onclick="removeCard(this)">Remove from Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="Images/Pottery1.jpg" alt="Japanese pottery">
+          <h3 class="product-title">Japanese style pottery</h3>
+          <p class="product-price">£100</p>
+          <button class="remove-from-cart" onclick="removeCard(this)">Remove from Cart</button>
+        </div>
+        <div id="cart-total" style="margin-top:1rem;font-weight:bold;">Total: £300</div>
+      </div>
+    </div>
+  </body>
+</html>
