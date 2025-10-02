@@ -1,2 +1,2 @@
 # Artisan-crafts-website
-This is a website that I created using just HTML and CSS as part of an ongoing project. 
+This project demonstrates the core structure of an online store without relying on JavaScript. It includes a responsive design that adapts to different devices, smooth navigation across sections and pages, a search bar that jumps to categories, product listings with detail pages, and a styled checkout form. Even though the interactive functionality is limited, the layout and styling replicate the look and flow of a real e-commerce site.
