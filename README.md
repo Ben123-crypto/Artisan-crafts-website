@@ -1,27 +1,43 @@
-# Artisan-crafts-website
-This project demonstrates the core structure of an online store without relying on JavaScript. It includes a responsive design that adapts to different devices, smooth navigation across sections and pages, a search bar that jumps to categories, product listings with detail pages, and a styled checkout form. Even though the interactive functionality is limited, the layout and styling replicate the look and flow of a real e-commerce site.
+# Artisan Crafts Website
 
-#features:
-- a navigation bar used to access the different sections of the site.
-- a drop-down search bar for a more refined search.
-- smooth scrolling navigation throughout the site for slick navigation.
-- an embeded YouTube video showcasing the skills of artisan craftsmen.
-- a product section to advertise the business' paintings, pottery an jewelery creations.
-- individual product pages for a more detailed view.
-- a footer displaying artisan crafts' contact details and social media profiles.
-- a checkout to view products in your cart as well as enter info should the product be purchased.
+Welcome to the Artisan Crafts Website! This project showcases a fully responsive online store designed to highlight the work of talented artisan craftsmen. The site is built using only HTML and CSS, ensuring a fast, accessible, and user-friendly experience—without any reliance on JavaScript.
 
-#how to use:
--use the navigation/dropdown search bar to find different products.
--click on product cards to go to its individual page.
--contact details to get in touch can be found at the footer.
--use the checkout section to finalise product purchases. 
+## Overview
 
-#languages used:
--HTML
--CSS
+The Artisan Crafts Website is ideal for small businesses or individuals looking to display and sell unique handmade creations such as paintings, pottery, and jewelry. The site features intuitive navigation, beautiful product displays, and simple checkout—all crafted to make shopping easy for everyone.
 
-#live website: 
+## Features
 
-#contact:
-b.price1642008@gmail.com
+- **Navigation Bar:** Easily access different sections of the website using the top navigation menu.
+- **Drop-Down Search Bar:** Refine your search for products with a convenient drop-down search feature.
+- **Smooth Scrolling:** Enjoy seamless navigation as you browse through various sections of the site.
+- **Embedded YouTube Video:** Watch a video showcasing the skills and artistry of our craftsmen.
+- **Product Gallery:** Explore our range of paintings, pottery, and jewelry, each with detailed descriptions and images.
+- **Individual Product Pages:** Click on any product to view more information, including photos and details about its creation.
+- **Footer with Contact Info:** Find our contact details and social media profiles at the bottom of every page.
+- **Checkout Section:** Review the products in your cart and easily provide your information to complete a purchase.
+
+## How to Use
+
+1. **Browse & Search:** Use the navigation bar or search feature to find products that interest you.
+2. **View Products:** Click on product cards to see more details and images.
+3. **Contact Us:** Find our email address and social media links in the footer if you have any questions or need assistance.
+4. **Checkout:** When you’re ready to purchase, go to the checkout section to finalize your order.
+
+## Technologies Used
+
+- **HTML** — The structure and content of the website.
+- **CSS** — Styling and responsive design for all devices.
+
+## Live Website
+
+*Coming soon! The live site will be available at [your-website-link-here].*
+
+## Contact
+
+If you have any questions or would like to get in touch, please email:  
+**b.price1642008@gmail.com**
+
+---
+
+Thank you for visiting the Artisan Crafts Website. We hope you enjoy exploring our handmade creations!
