@@ -2,12 +2,11 @@
 <html>
 <head>
   <title>Artisan Crafts</title>
-  <link rel="stylesheet" href="styles/style.css">
-
+  <link rel="stylesheet" href="styles/style.css"> <!--references the CSS used to add styling to the code-->
 </head>
 
 <body>
-
+<!--creating a dropdown list for the search bar that links to each sections's ID-->
   <nav>
     <form class="search-form" action="" onsubmit="return false;">
       <select id="search-select" onchange="if(this.value) window.location.href=this.value">
@@ -20,7 +19,7 @@
         <option value="#Jewelery">£50</option>
       </select>
     </form>
-    <ul>
+    <ul><!--creates a list to be used as a nav bar when styled with CSS-->
       <li><a href="index.html">Welcome</a></li>
       <li><a href="#paintings">Paintings</a></li>
       <li><a href="#pottery">Pottery</a></li>
@@ -29,11 +28,11 @@
     </ul>
   </nav>
 
-  <section >
+  <section ><!--the welcome messsage used to introduce the site-->
     <h1 class="business-name">Welcome to artisan crafts</h1>
     <p class="welcome-paragraph">We offer beautiful handmade crafts and artwork. Explore and discover our unique collection of artisan products below</p>
   </section>
-
+<!--The embeded video used to showcase the history behind unique crafts-->
   <section>
     <h2>Discover the history behind our expertly crafted products</h2>
 <div class="video-container">
@@ -46,7 +45,7 @@
 </iframe>
 </div>
 </section>
-
+<!--product listings-->
 <h1 id="paintings">Paintings</h1>
 <section class="product-section">
   
@@ -126,85 +125,7 @@
   </div>
 </footer>
 
-<script src="scripts/store.js"></script>
-<script>
-// Shopping cart logic
-let cart = [];
-function updateCartDisplay() {
-  const cartCount = document.getElementById('cart-count');
-  cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
-  const cartItems = document.getElementById('cart-items');
-  if (cart.length === 0) {
-    cartItems.textContent = 'No items in cart.';
-    document.getElementById('cart-total').textContent = '';
-  } else {
-    cartItems.innerHTML = cart.map((item, idx) => `
-      <div>
-        <strong>${item.title}</strong> (£${item.price}) x ${item.qty}
-        <button onclick="removeFromCart(${idx})">Remove</button>
-        <input type="number" min="1" value="${item.qty}" onchange="updateQty(${idx}, this.value)">
-      </div>
-    `).join('');
-    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    document.getElementById('cart-total').textContent = `Total: £${total}`;
-  }
-  // Also update checkout section
-  const checkoutCart = document.getElementById('checkout-cart-items');
-  if (checkoutCart) {
-    if (cart.length === 0) {
-      checkoutCart.textContent = 'No items in cart.';
-    } else {
-      checkoutCart.innerHTML = '<h3>Products in Cart</h3>' + cart.map(item => `
-        <div><strong>${item.title}</strong> (£${item.price}) x ${item.qty}</div>
-      `).join('') + `<div style='margin-top:1rem;font-weight:bold;'>Total: £${cart.reduce((sum, item) => sum + item.price * item.qty, 0)}</div>`;
-    }
-  }
-}
-function addToCart(title, price) {
-  const idx = cart.findIndex(item => item.title === title);
-  if (idx > -1) {
-    cart[idx].qty++;
-  } else {
-    cart.push({ title, price, qty: 1 });
-  }
-  updateCartDisplay();
-}
-function removeFromCart(idx) {
-  cart.splice(idx, 1);
-  updateCartDisplay();
-}
-function updateQty(idx, qty) {
-  cart[idx].qty = Math.max(1, parseInt(qty));
-  updateCartDisplay();
-}
-function goToCheckout() {
-  document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
-}
-// Attach add-to-cart buttons
-Array.from(document.getElementsByClassName('add-to-cart')).forEach(btn => {
-  btn.onclick = function() {
-    const card = btn.closest('.product-card');
-    const title = card.querySelector('.product-title').textContent;
-    const price = parseInt(card.querySelector('.product-price').textContent.replace('£',''));
-    addToCart(title, price);
-  };
-});
-// Product search
-function filterProducts() {
-  const query = document.getElementById('search-bar').value.toLowerCase();
-  document.querySelectorAll('.product-card').forEach(card => {
-    const title = card.querySelector('.product-title').textContent.toLowerCase();
-    card.style.display = title.includes(query) ? '' : 'none';
-  });
-}
-// Cart icon click scrolls to cart
-const cartIcon = document.getElementById('cart-icon');
-if (cartIcon) {
-  cartIcon.onclick = function() {
-    document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
-  };
-}
-</script>
+
 
 </body>
 </html>
