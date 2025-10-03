@@ -1,34 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Artisan crafts checkout</title>
+    <title>Artisan crafts checkout</title><!--A checkout form used to finalise purchases and view in-cart products-->
     <link rel="stylesheet" href="styles/style.css">
-    <script>
-      function removeCard(btn) {
-        btn.parentElement.remove();
-        updateTotal();
-      }
-      function updateTotal() {
-        var cards = document.querySelectorAll('.product-card');
-        var total = 0;
-        cards.forEach(function(card) {
-          var price = card.querySelector('.product-price').textContent.replace('£','');
-          total += parseInt(price);
-        });
-        document.getElementById('cart-total').textContent = 'Total: £' + total;
-      }
-      window.onload = function() {
-        updateTotal();
-      };
-    </script>
   </head>
   <body>
     <nav>
       <a href="index.html">← Back to Shop</a>
     </nav>
-    <div class="checkout-form-container">
-      <form class="checkout-form">
-        <input type="text" id="name" name="name" placeholder="Name" required>
+    <div class="checkout-form-container"><!--uses text boxes for customer information, styles with CSS to look like a form-->
+      <form class="checkout-form" method="post">
+        <input type="text" id="name" name="name" placeholder="Name" required><!--indicates that the field is required an displays a message if not filled in-->
         <input type="email" id="email" name="email" placeholder="Email" required>
         <input type="text" id="address" name="address" placeholder="Address" required>
         <input type="text" id="card-number" name="card-number" placeholder="Card Number" required>
@@ -36,19 +18,20 @@
         <input type="text" id="card-cvc" name="card-cvc" placeholder="CVC" required>
         <button type="submit">Submit</button>
       </form>
+      <!--creates some example items in the customer cart, in JS updates, the items in cart will be accurate and able to be removed-->
       <div style="margin-top:2rem;">
         <h3>Products in Cart</h3>
         <div class="product-card">
           <img src="Images/Painting1.jpg" alt="Mona Lisa painting">
           <h3 class="product-title">Da Vinci's Mona Lisa</h3>
           <p class="product-price">£200</p>
-          <button class="remove-from-cart" onclick="removeCard(this)">Remove from Cart</button>
+          <button class="remove-from-cart" type="button">Remove from Cart</button>
         </div>
         <div class="product-card">
           <img src="Images/Pottery1.jpg" alt="Japanese pottery">
           <h3 class="product-title">Japanese style pottery</h3>
           <p class="product-price">£100</p>
-          <button class="remove-from-cart" onclick="removeCard(this)">Remove from Cart</button>
+          <button class="remove-from-cart" type="button">Remove from Cart</button>
         </div>
         <div id="cart-total" style="margin-top:1rem;font-weight:bold;">Total: £300</div>
       </div>
